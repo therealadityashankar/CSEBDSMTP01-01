@@ -27,6 +27,7 @@ resource "hcloud_server" "k3s" {
   user_data = <<-EOF
     #!/bin/bash
     set -e
+    apt-get update && apt-get install -y docker.io
     curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
   EOF
 }

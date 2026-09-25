@@ -5,9 +5,9 @@ variable "hcloud_token" {
 }
 
 variable "server_type" {
-  description = "Hetzner server type (cpx31 recommended for 8GB RAM)"
+  description = "Hetzner server type (cx33 recommended for 4 vCPU, 8GB RAM)"
   type        = string
-  default     = "cpx31"
+  default     = "cx33"
 }
 
 variable "location" {

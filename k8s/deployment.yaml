@@ -46,3 +46,19 @@ spec:
     - port: 8000
       targetPort: 8000
       nodePort: 30080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: grammar-corrector-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grammar-corrector
+                port:
+                  number: 8000
