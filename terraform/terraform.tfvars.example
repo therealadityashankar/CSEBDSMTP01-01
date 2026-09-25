@@ -1,0 +1,10 @@
+# example values, modify for your deployment
+
+# your hertzner token
+hcloud_token   = "your-hetzner-cloud-api-token"
+
+# your ssh public key
+ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5..."
+
+server_type    = "cpx31"
+location       = "fsn1"
