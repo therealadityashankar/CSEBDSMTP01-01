@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
@@ -25,6 +25,8 @@ def health():
 
 @app.post("/correct", response_model=CorrectionResponse)
 def correct(req: CorrectionRequest):
+    if len(req.text) >= 500:
+        raise HTTPException(status_code=400, detail="Text length must be less than 500 characters")
     inputs = tokenizer(req.text, return_tensors="pt").to(device)
     with torch.no_grad():
         generated = model.generate(**inputs, max_length=256)
