@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
@@ -18,6 +19,16 @@ class CorrectionRequest(BaseModel):
 class CorrectionResponse(BaseModel):
     original: str
     corrected: str
+
+@app.get("/", response_class=PlainTextResponse)
+def root():
+    return (
+        "German Grammar Corrector API\n\n"
+        "Usage:\n"
+        "  curl -X POST https://grammer-correcter.river.berlin/correct \\\n"
+        "    -H \"Content-Type: application/json\" \\\n"
+        "    -d '{\"text\": \"Ich gehe in die Schule jeden Tag mit der Bus.\"}'\n"
+    )
 
 @app.get("/health")
 def health():
