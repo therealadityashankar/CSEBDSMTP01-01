@@ -9,6 +9,8 @@ cache/
 *.tfstate
 *.tfstate.backup
 *.tfvars
+terraform.tfvars
+terraform/terraform.tfvars
 !*.tfvars.example
 
 # Kubernetes
