@@ -8,7 +8,6 @@ To test this on the live deployment do check out the "Testing the code" section,
 
 macOS (via Homebrew):
 ```bash
-bash
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 ```
