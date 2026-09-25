@@ -1,4 +1,4 @@
-import json, urllib.error, urllib.request
+import json, random, time, urllib.error, urllib.request
 
 url = "http://localhost:8000"
 sentences = json.load(open("test_sentences.json"))
@@ -15,3 +15,4 @@ for s in sentences:
     except urllib.error.HTTPError as e:
         body = json.loads(e.read())
         print(f"{s}\n=> HTTP {e.code}: {body.get('detail')}\n")
+    time.sleep(random.uniform(0.5, 1.0))
